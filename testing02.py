@@ -25,7 +25,7 @@ celisti.wait_until_ready()
 def pasy_rotuj(uhel_l, uhel_r, rychlost):
     """Spusti oba pasy najednou a pocka, az oba dojedou."""
     motor_l.rotate(uhel_l, rychlost, 0) 
-    motor_r.rotate(uhel_r, rychlost, 0)
+    motor_r.rotate(uhel_r, rychlost, 0) # tady možná bude potřeba něco měnit, protože při 2 metrech jízdy se vozidlo nepatrně vychýlí doprava
     motor_l.wait_until_done()
     motor_r.wait_until_done()
     motor_l.brake()
@@ -59,19 +59,9 @@ print("Start za 3 s")
 sleep(3)
 
 try:
-    otevri_celisti()
+    jed_cm(200)
+    jed_cm(-200)
 
-    jed_cm(60)
-
-    zavri_celisti()
-
-    sleep(1)
-
-    otoc_stupne(180)
-
-    jed_cm(60)
-
-    otoc_stupne(180)
 
 finally:
     motor_l.brake()
