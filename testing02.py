@@ -1,19 +1,18 @@
 import brian.motors as motors
 from time import sleep
 
-CM_NA_OTACKU = 10.0 # Kolik cm ujede robot pri 1 otacce motoru
+CM_NA_OTACKU = 13 # Kolik cm ujede robot pri 1 otacce motoru
 
 OTACKY_NA_360 = 6.0 # Kolik otacek motoru je potreba k otoceni o 360 stupnu
 
 SMER_LEVY = -1 # dopredu = -1, dozadu = 1
 SMER_PRAVY = -1 # dopredu = -1, dozadu = 1
-SMER_CELISTI = 1 # otevrit = 1, zavrit = -1
 
 RYCHLOST_JIZDA = 300     # stupne/s (velky motor max 1050)
 RYCHLOST_OTACENI = 200   # stupne/s
-RYCHLOST_CELISTI = 150   # stupne/s (stredni motor max 1560)
-UHEL_CELISTI = 90        # o kolik stupnu motoru se celisti otevrou
-
+RYCHLOST_CELISTI = 450   # stupne/s (stredni motor max 1560)
+OTEVRENI_CELISTI = -180     # o kolik stupnu motoru se celisti otevrou
+ZAVRENI_CELISTI = 500          # klidně tam dát overkill těch otáček, u toho robota se stává, že, když jede, tak se mu čelisti trochu otevřou
 
 motor_l = motors.EV3LargeMotor(motors.MotorPort.B)
 motor_r = motors.EV3LargeMotor(motors.MotorPort.C)
@@ -45,13 +44,13 @@ def otoc_stupne(stupne):
     uhel = int(stupne * OTACKY_NA_360)  # (stupne/360) * otacky * 360
     pasy_rotuj(uhel * SMER_LEVY, -uhel * SMER_PRAVY, RYCHLOST_OTACENI)
 
-
+# když se motor točí dozadu, tak se čelisti otevřou
 def otevri_celisti():
-    celisti.rotate(UHEL_CELISTI * SMER_CELISTI, RYCHLOST_CELISTI)
+    celisti.rotate(OTEVRENI_CELISTI, RYCHLOST_CELISTI) # směr je relativně zbytečný bohatě stačí minus
 
 
 def zavri_celisti():
-    celisti.rotate(-UHEL_CELISTI * SMER_CELISTI, RYCHLOST_CELISTI)
+    celisti.rotate(ZAVRENI_CELISTI, RYCHLOST_CELISTI)
 
 
 # ---------------- PROGRAM ----------------
@@ -60,26 +59,20 @@ print("Start za 3 s")
 sleep(3)
 
 try:
-    print("1: Dopredu 20 cm")
-    jed_cm(20)
-
-    print("2: Dozadu 20 cm")
-    jed_cm(-20)
-
-    print("3: Doprava 90")
-    otoc_stupne(90)
-
-    print("4: Doleva 90")
-    otoc_stupne(-90)
-
-    print("5: Celisti otevrit")
     otevri_celisti()
-    sleep(0.5)
 
-    print("6: Celisti zavrit")
+    jed_cm(60)
+
     zavri_celisti()
 
-    print("Hotovo")
+    sleep(1)
+
+    otoc_stupne(180)
+
+    jed_cm(60)
+
+    otoc_stupne(180)
+
 finally:
     motor_l.brake()
     motor_r.brake()
