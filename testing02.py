@@ -11,7 +11,7 @@ SMER_PRAVY = -1 # dopredu = -1, dozadu = 1
 RYCHLOST_JIZDA = 300     # stupne/s (velky motor max 1050)
 RYCHLOST_OTACENI = 200   # stupne/s
 RYCHLOST_CELISTI = 450   # stupne/s (stredni motor max 1560)
-OTEVRENI_CELISTI = -180     # o kolik stupnu motoru se celisti otevrou
+OTEVRENI_CELISTI = -380     # o kolik stupnu motoru se celisti otevrou
 ZAVRENI_CELISTI = 500          # klidně tam dát overkill těch otáček, u toho robota se stává, že, když jede, tak se mu čelisti trochu otevřou
 
 motor_l = motors.EV3LargeMotor(motors.MotorPort.B)
@@ -55,15 +55,3 @@ def zavri_celisti():
 
 # ---------------- PROGRAM ----------------
 # Celisti musi byt na zacatku ZAVRENE.
-print("Start za 3 s")
-sleep(3)
-
-try:
-    jed_cm(200)
-    jed_cm(-200)
-
-
-finally:
-    motor_l.brake()
-    motor_r.brake()
-    celisti.brake()

@@ -1,0 +1,1 @@
+1. Pro algoritmus na 16 bodů (16.py) je potřeba, aby robot byl rychlejší a aby opravdu jel správné vzdálenosti (aby se pak nevychýlil)
