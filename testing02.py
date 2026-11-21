@@ -11,8 +11,6 @@ SMER_PRAVY = -1 # dopredu = -1, dozadu = 1
 RYCHLOST_JIZDA = 300     # stupne/s (velky motor max 1050)
 RYCHLOST_OTACENI = 200   # stupne/s
 RYCHLOST_CELISTI = 450   # stupne/s (stredni motor max 1560)
-OTEVRENI_CELISTI = -380     # o kolik stupnu motoru se celisti otevrou
-ZAVRENI_CELISTI = 500          # klidně tam dát overkill těch otáček, u toho robota se stává, že, když jede, tak se mu čelisti trochu otevřou
 
 motor_l = motors.EV3LargeMotor(motors.MotorPort.B)
 motor_r = motors.EV3LargeMotor(motors.MotorPort.C)
@@ -24,7 +22,7 @@ celisti.wait_until_ready()
 
 def pasy_rotuj(uhel_l, uhel_r, rychlost):
     """Spusti oba pasy najednou a pocka, az oba dojedou."""
-    motor_l.rotate(uhel_l, rychlost, 0) 
+    motor_l.rotate(uhel_l * 0.98, rychlost, 0) 
     motor_r.rotate(uhel_r, rychlost, 0) # tady možná bude potřeba něco měnit, protože při 2 metrech jízdy se vozidlo nepatrně vychýlí doprava
     motor_l.wait_until_done()
     motor_r.wait_until_done()
@@ -45,12 +43,15 @@ def otoc_stupne(stupne):
     pasy_rotuj(uhel * SMER_LEVY, -uhel * SMER_PRAVY, RYCHLOST_OTACENI)
 
 # když se motor točí dozadu, tak se čelisti otevřou
-def otevri_celisti():
-    celisti.rotate(OTEVRENI_CELISTI, RYCHLOST_CELISTI) # směr je relativně zbytečný bohatě stačí minus
+def zavrit_prsty():
+    celisti.rotate(-600, RYCHLOST_CELISTI) # směr je relativně zbytečný bohatě stačí minus
 
 
-def zavri_celisti():
-    celisti.rotate(ZAVRENI_CELISTI, RYCHLOST_CELISTI)
+def skladani():
+    celisti.rotate(-270, RYCHLOST_CELISTI)
+
+def otevrit_stack():
+    celisti.rotate(530, RYCHLOST_CELISTI)
 
 
 # ---------------- PROGRAM ----------------
