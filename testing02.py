@@ -10,7 +10,7 @@ SMER_PRAVY = -1 # dopredu = -1, dozadu = 1
 
 RYCHLOST_JIZDA = 520     # stupne/s (velky motor max 1050)
 RYCHLOST_OTACENI = 200   # stupne/s
-RYCHLOST_CELISTI = 450   # stupne/s (stredni motor max 1560)
+RYCHLOST_CELISTI = 40  # stupne/s (stredni motor max 1560)
 
 motor_l = motors.EV3LargeMotor(motors.MotorPort.B)
 motor_r = motors.EV3LargeMotor(motors.MotorPort.C)
@@ -47,11 +47,8 @@ def zavrit_prsty():
     celisti.rotate(-600, RYCHLOST_CELISTI) # směr je relativně zbytečný bohatě stačí minus
 
 
-def skladani():
-    celisti.rotate(-270, RYCHLOST_CELISTI)
-
-def otevrit_stack():
-    celisti.rotate(530, RYCHLOST_CELISTI)
+def zmenit_celisti(uhel):
+    celisti.rotate(uhel, RYCHLOST_CELISTI)
 
 
 # ---------------- PROGRAM ----------------
