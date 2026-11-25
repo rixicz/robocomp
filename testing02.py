@@ -3,7 +3,7 @@ from time import sleep
 
 CM_NA_OTACKU = 13 # Kolik cm ujede robot pri 1 otacce motoru
 
-OTACKY_NA_360 = 4.2 # Kolik otacek motoru je potreba k otoceni o 360 stupnu
+OTACKY_NA_360 = 4.25 # Kolik otacek motoru je potreba k otoceni o 360 stupnu
 
 SMER_LEVY = -1 # dopredu = -1, dozadu = 1
 SMER_PRAVY = -1 # dopredu = -1, dozadu = 1
