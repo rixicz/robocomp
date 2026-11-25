@@ -1,6 +1,3 @@
-from testing02 import *
+from testmoving import *
 
-otevrit_stack()
-jed_cm(70)
-skladani()
-jed_cm(-70)
+jed_cm(200) 
