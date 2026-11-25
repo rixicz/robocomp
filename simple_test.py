@@ -1,6 +1,17 @@
 from testing02 import *
 
-otevrit_stack()
+jed_cm(50)
+
+otoc_stupne(-90)
+
+jed_cm(60)
+
+jed_cm(-60)
+
+otoc_stupne(-90)
+
+jed_cm(30)
+
+otoc_stupne(90)
+
 jed_cm(70)
-skladani()
-jed_cm(-70)

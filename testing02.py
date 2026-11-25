@@ -3,12 +3,12 @@ from time import sleep
 
 CM_NA_OTACKU = 13 # Kolik cm ujede robot pri 1 otacce motoru
 
-OTACKY_NA_360 = 6.0 # Kolik otacek motoru je potreba k otoceni o 360 stupnu
+OTACKY_NA_360 = 4.2 # Kolik otacek motoru je potreba k otoceni o 360 stupnu
 
 SMER_LEVY = -1 # dopredu = -1, dozadu = 1
 SMER_PRAVY = -1 # dopredu = -1, dozadu = 1
 
-RYCHLOST_JIZDA = 300     # stupne/s (velky motor max 1050)
+RYCHLOST_JIZDA = 520     # stupne/s (velky motor max 1050)
 RYCHLOST_OTACENI = 200   # stupne/s
 RYCHLOST_CELISTI = 450   # stupne/s (stredni motor max 1560)
 
