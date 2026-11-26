@@ -1,48 +1,54 @@
 from testing02 import *
 
+zmenit_celisti(30)
+
+jed_cm(55)
+
+zmenit_celisti(15)
+
+otoc_stupne(-80)
+
 jed_cm(50)
-
-zmenit_celisti(-15)
-
-otoc_stupne(-90)
-
-jed_cm(60)
 
 # dal 3 kostky za sebe hopefully, teď se bude vracet na své místo
 
-jed_cm(-57)
+jed_cm(-47)
 
-otoc_stupne(-90)
-
-zmenit_celisti(30)
+otoc_stupne(-86)
 
 jed_cm(40)
 
+zmenit_celisti(-30)
 # pomalé otáčení, aby to fitlo
 
-otoc_stupne(15)
-
-jed_cm(2)
-
-otoc_stupne(15)
-
-jed_cm(2)
-
-otoc_stupne(15)
+otoc_stupne(17)
 
 jed_cm(5)
 
-otoc_stupne(45)
+otoc_stupne(20)
 
-# měl by být ready brá další kostky
+jed_cm(8)
 
-jed_cm(87)
+otoc_stupne(20)
 
-zmenit_celisti(35)
+jed_cm(8)
 
-otoc_stupne(90)
+otoc_stupne(20)
 
-jed_cm(50)
+jed_cm(7)
 
-jed_cm(-50)
+otoc_stupne(16)
+
+# měl by být ready brát další kostky
+zmenit_celisti(30)
+
+jed_cm(78)
+
+zmenit_celisti(-80)
+
+otoc_stupne(110)
+
+jed_cm(45)
+
+jed_cm(-40)
 
