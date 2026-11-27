@@ -1,4 +1,4 @@
-from testing02 import *
+from config import *
 
 zmenit_celisti(30)
 
